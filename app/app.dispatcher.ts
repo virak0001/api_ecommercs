@@ -5,7 +5,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 declare const module: any;
 export class AppDispatcher {
-  private _config: ConfigService;
   private _app: NestExpressApplication;
   private _logger = new AppLogger(AppDispatcher.name);
   async dispatch(): Promise<void> {
@@ -21,6 +20,6 @@ export class AppDispatcher {
     const host = config.get('host');
     const port = +config.get('port');
     await app.listen(port, host);
-    this._logger.log(`Server is listening http://${host}:${port}`);
+    this._logger.log(`Server is listening https://${host}:${port}`);
   }
 }
