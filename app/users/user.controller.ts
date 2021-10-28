@@ -7,7 +7,6 @@ export class UserController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   async login(@Body() payload: UserLogin) {
-    console.info(payload);
     return payload;
   }
 }
