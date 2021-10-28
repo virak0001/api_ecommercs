@@ -1,9 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-@Entity()
-export class Category {
-  @PrimaryGeneratedColumn('uuid')
-  id: number;
-
+import { Entity, Column } from 'typeorm';
+import { AbstractSoftDeleteEntity } from '../../../libs/core/src/common/abstract-soft-delete.entity';
+@Entity('categories')
+export class Category extends AbstractSoftDeleteEntity {
   @Column()
   name: string;
 }
