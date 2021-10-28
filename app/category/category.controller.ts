@@ -10,14 +10,18 @@ import {
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { AbstractController } from '../../libs/core/src/common/abstract.controller';
 
 @Controller('categories')
-export class CategoryController {
-  constructor(private readonly categoryService: CategoryService) {}
+export class CategoryController extends AbstractController {
+  constructor(private readonly categoryService: CategoryService) {
+    super();
+  }
 
   @Post()
-  create(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoryService.create(createCategoryDto);
+  async create(@Body() createCategoryDto: CreateCategoryDto) {
+    const data = await this.categoryService.create(createCategoryDto);
+    return this.response(data, 'success');
   }
 
   @Get()

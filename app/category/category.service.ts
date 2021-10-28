@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { CategoryRepository } from './category.repository';
+import { Category } from './entities/category.entity';
 
 @Injectable()
 export class CategoryService {
   constructor(public repo: CategoryRepository) {}
-  create(createCategoryDto: CreateCategoryDto) {
+  async create(createCategoryDto: CreateCategoryDto): Promise<Category> {
     return this.repo.save(createCategoryDto);
   }
 
