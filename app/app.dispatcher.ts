@@ -3,6 +3,7 @@ import { AppLogger } from 'libs/core/src/app.logger';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 declare const module: any;
 export class AppDispatcher {
   private _app: NestExpressApplication;
@@ -16,6 +17,7 @@ export class AppDispatcher {
   }
   private async _startServer(): Promise<void> {
     const app = await NestFactory.create(AppModule);
+    this._app.useGlobalPipes(new ValidationPipe());
     const config = app.get(ConfigService);
     const host = config.get('host');
     const port = +config.get('port');
