@@ -10,4 +10,13 @@ export class HashUtil {
   static validateHash(password: string, hash: string): Promise<boolean> {
     return bcrypt.compare(password + this._secret, hash || '');
   }
+
+  /**
+   * generate hash from password or string
+   * @param {string} password
+   * @returns {string}
+   */
+  static generateHash(password: string): string {
+    return bcrypt.hashSync(password, 10);
+  }
 }
