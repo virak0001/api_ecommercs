@@ -1,10 +1,10 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayloadDto } from './dto/token-payload.dto';
 import { classToPlain } from 'class-transformer';
 import { HashUtil } from '../../libs/core/src/utils/hash.util';
-import { Status } from "../users/user.enum";
+import { Status } from '../users/user.enum';
 
 @Injectable()
 export class AuthService {
