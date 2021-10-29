@@ -1,12 +1,15 @@
-import { Controller, Request, Post, UseGuards, Body } from '@nestjs/common';
-import { LocalAuthGuard } from '../auth/locale/local-auth.guard';
-import { UserLogin } from './dto/user-login';
+import { Controller, Post } from '@nestjs/common';
+import { AbstractController } from '../../libs/core/src/common/abstract.controller';
+import { UsersService } from './users.service';
+import { UserRegisterDto } from './dto/user-register.dto';
 
-@Controller('user')
-export class UserController {
-  @UseGuards(LocalAuthGuard)
-  @Post('/login')
-  async login(@Body() payload: UserLogin) {
-    return payload;
+@Controller('users')
+export class UserController extends AbstractController {
+  constructor(private readonly _userService: UsersService) {
+    super();
+  }
+  @Post()
+  async create(payload: UserRegisterDto) {
+    return this._userService.createOne(payload);
   }
 }

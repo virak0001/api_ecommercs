@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty, Max, Min } from 'class-validator';
+import { IsEmail, IsNotEmpty } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class AuthLogin {
   @IsEmail()

@@ -6,5 +6,5 @@
   "password": "",
   "database": "api_ecommerce",
   "entities": ["dist/**/*.entity{.ts,.js}"],
-  "synchronize": false
+  "synchronize": true
 }

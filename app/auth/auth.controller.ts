@@ -1,16 +1,10 @@
-import {
-  Controller,
-  Post,
-  UseGuards,
-  Body,
-  Get,
-} from '@nestjs/common';
+import { Controller, Post, UseGuards, Body, Get } from '@nestjs/common';
 import { LocalAuthGuard } from './locale/local-auth.guard';
 import { AuthLogin } from './dto/auth-login';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { JwtService } from '@nestjs/jwt';
-import { AuthUser } from "../../libs/core/src/decorators/auth-user.decorator";
+import { AuthUser } from '../../libs/core/src/decorators/auth-user.decorator';
 
 @Controller('auth')
 export class AuthController {
