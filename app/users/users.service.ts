@@ -1,31 +1,27 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from './user.repository';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { UserEntity } from "./entities/user.entity";
-// export type User = any;
+import { UserEntity } from './entities/user.entity';;
 @Injectable()
 export class UsersService {
-  constructor(private readonly _repo: UserRepository) {}
-  private readonly users = [
-    {
-      userId: 1,
-      email: 'virakcambodia44@gmail.com',
-      password: 'changeme',
-      status: 'ACTIVE',
-    },
-    {
-      userId: 2,
-      email: 'maria',
-      password: 'guess',
-      status: 'INACTIVE',
-    },
-  ];
+  constructor(public repo: UserRepository) {}
 
-  async findOne(email: string): Promise<any> {
-    return this.users.find((user) => user.email === email);
+  async findIsExist(email: string): Promise<any> {
+    const user = await this.repo.findOne({ email });
+    if (user) {
+      throw new HttpException(
+        {
+          error: 'User',
+          message: 'Email is already exist.',
+        },
+        HttpStatus.PRECONDITION_FAILED,
+      );
+    }
+    return user;
   }
 
-  async createOne(payload: UserRegisterDto): Promise<any> {
-    return this._repo.save(payload);
+  async createOne(payload: UserRegisterDto): Promise<UserEntity> {
+    await this.findIsExist(payload.email);
+    return this.repo.save(payload);
   }
 }
