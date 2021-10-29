@@ -1,34 +1,33 @@
 import {
   Controller,
-  Request,
   Post,
   UseGuards,
   Body,
   Get,
-  Req,
 } from '@nestjs/common';
-import { LocalAuthGuard } from './local-auth.guard';
+import { LocalAuthGuard } from './locale/local-auth.guard';
 import { AuthLogin } from './dto/auth-login';
 import { AuthService } from './auth.service';
-// import { JwtAuthGuard } from './auth.guard';
-// import { AuthGuard } from '@nestjs/passport';
 import { AuthGuard } from './auth.guard';
-// import { ApiBearerAuth } from '@nestjs/swagger';
+import { JwtService } from '@nestjs/jwt';
+import { AuthUser } from "../../libs/core/src/decorators/auth-user.decorator";
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private readonly _jwtService: JwtService,
+  ) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() payload: AuthLogin) {
-    console.info(payload);
-    return this.authService.login(payload);
+    return this.authService.createAccessToken(payload);
   }
 
   @Get('profile')
   @UseGuards(AuthGuard)
-  public async whoAmi(): Promise<any> {
-    return 'ddd';
+  public async whoAmI(@AuthUser() user: any): Promise<any> {
+    return user;
   }
 }
