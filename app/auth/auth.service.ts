@@ -3,6 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayloadDto } from './dto/token-payload.dto';
 import { classToPlain } from 'class-transformer';
+import { HashUtil } from "../../libs/core/src/utils/hash.util";
 
 @Injectable()
 export class AuthService {
@@ -11,12 +12,8 @@ export class AuthService {
     private _jwtService: JwtService,
   ) {}
   async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.usersService.repo.findOne(email);
-    if (user && user.password === password) {
-      const { password, ...result } = user;
-      return result;
-    }
-    return null;
+    const user = await this.usersService.repo.findOne({ email });
+    return HashUtil.validateHash(password, user.password);
   }
 
   async createAccessToken(user: any): Promise<any> {
