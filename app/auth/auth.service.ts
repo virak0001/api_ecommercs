@@ -3,7 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayloadDto } from './dto/token-payload.dto';
 import { classToPlain } from 'class-transformer';
-import { HashUtil } from "../../libs/core/src/utils/hash.util";
+import { HashUtil } from '../../libs/core/src/utils/hash.util';
 
 @Injectable()
 export class AuthService {
