@@ -10,7 +10,7 @@ import { ApiHideProperty } from '@nestjs/swagger';
 
 export class UserRegisterDto {
   @IsNotEmpty()
-  readonly name: string;
+  readonly username: string;
 
   @IsNotEmpty()
   @IsEmail()
