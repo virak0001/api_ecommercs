@@ -4,4 +4,13 @@ import { AbstractSoftDeleteEntity } from '@libs/core/common/abstract-soft-delete
 export class Category extends AbstractSoftDeleteEntity {
   @Column()
   name: string;
+
+  @Column()
+  metaName: string;
+
+  @Column()
+  slug: string;
+
+  @Column()
+  context: string;
 }

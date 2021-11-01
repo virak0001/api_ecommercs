@@ -37,7 +37,6 @@ export class AppDispatcher {
       AppModule,
       options,
     );
-    console.info(this._app.get(ConfigService));
     this._config = this._app.get(ConfigService);
   }
   private async _startServer(): Promise<void> {
