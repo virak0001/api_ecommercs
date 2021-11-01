@@ -10,7 +10,7 @@ import {
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
-import { AbstractController } from '../../libs/core/src/common/abstract.controller';
+import { AbstractController } from '@libs/core/common/abstract.controller';
 
 @Controller('categories')
 export class CategoryController extends AbstractController {
