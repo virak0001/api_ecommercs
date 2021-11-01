@@ -1,4 +1,3 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
 import { TimestampSoftDeleteMigration } from '../common';
 
 export class CreateTablePostTesting1635782025416 extends TimestampSoftDeleteMigration {
