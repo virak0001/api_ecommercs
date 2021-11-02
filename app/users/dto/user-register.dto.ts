@@ -5,8 +5,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { Status } from '../user.enum';
-import { ApiHideProperty } from '@nestjs/swagger';
+import { RoleType } from '../user.enum';
 
 export class UserRegisterDto {
   @IsNotEmpty()
@@ -24,6 +23,6 @@ export class UserRegisterDto {
   @MaxLength(16)
   password: string;
 
-  @ApiHideProperty()
-  status: Status;
+  @IsOptional()
+  role?: RoleType;
 }

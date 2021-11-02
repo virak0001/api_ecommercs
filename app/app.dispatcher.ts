@@ -23,7 +23,7 @@ export class AppDispatcher {
     const cert = process.env.SSL_CERT;
     const options: NestApplicationOptions = {
       bodyParser: true,
-      logger: new AppLogger('PMS'),
+      logger: new AppLogger('Ecommerce'),
     };
     if (key && cert) {
       const httpsOptions = {
