@@ -1,7 +1,7 @@
 import { AbstractSoftDeleteEntity } from '@libs/core/common/abstract-soft-delete.entity';
 import { Column, Entity } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { RoleType, Status } from '../user.enum';
+import { IsAdmin, RoleType, Status } from '../user.enum';
 
 @Entity('users')
 export class UserEntity extends AbstractSoftDeleteEntity {
@@ -20,6 +20,9 @@ export class UserEntity extends AbstractSoftDeleteEntity {
 
   @Column({ nullable: true })
   mobile?: number;
+
+  @Column({ nullable: false, enum: IsAdmin, default: IsAdmin.FALSE })
+  is_admin: IsAdmin;
 
   @Column({ type: 'enum', enum: Status, default: Status.INACTIVE })
   status: Status;

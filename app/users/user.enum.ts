@@ -10,3 +10,8 @@ export enum RoleType {
   OWNER = 'OWNER',
   MEMBER = 'MEMBER',
 }
+
+export enum IsAdmin {
+  TRUE = 1,
+  FALSE = 0,
+}

@@ -1,5 +1,5 @@
 import { TimestampSoftDeleteMigration } from '../common';
-import { RoleType, Status } from '../../app/users/user.enum';
+import { Status } from '../../app/users/user.enum';
 
 export class CreateTableUsers1635823697936 extends TimestampSoftDeleteMigration {
   public tableName = 'users';
@@ -33,6 +33,10 @@ export class CreateTableUsers1635823697936 extends TimestampSoftDeleteMigration 
       name: 'avatar',
       type: 'varchar',
       isNullable: true,
+    },
+    {
+      name: 'is_admin',
+      type: 'varchar',
     },
     {
       name: 'status',
