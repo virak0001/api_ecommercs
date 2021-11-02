@@ -2,6 +2,7 @@
  * Windows: Please do not use trailing comma as windows will fail with token error
  */
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { series } = require('nps-utils');
 
 module.exports = {
