@@ -19,7 +19,7 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   avatar?: string;
 
   @Column({ nullable: true })
-  mobile?: number;
+  mobile?: string;
 
   @Column({ nullable: false, enum: IsAdmin, default: IsAdmin.FALSE })
   is_admin: IsAdmin;
@@ -29,4 +29,7 @@ export class UserEntity extends AbstractSoftDeleteEntity {
 
   @Column('datetime', { nullable: true })
   last_login_date: Date;
+
+  @Column('datetime', { nullable: true })
+  verified_at: Date;
 }

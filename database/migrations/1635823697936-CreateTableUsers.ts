@@ -26,7 +26,7 @@ export class CreateTableUsers1635823697936 extends TimestampSoftDeleteMigration 
     },
     {
       name: 'mobile',
-      type: 'int',
+      type: 'varchar',
       isNullable: true,
     },
     {
@@ -45,6 +45,11 @@ export class CreateTableUsers1635823697936 extends TimestampSoftDeleteMigration 
     },
     {
       name: 'last_login_date',
+      type: 'datetime',
+      isNullable: true,
+    },
+    {
+      name: 'verified_at',
       type: 'datetime',
       isNullable: true,
     },
