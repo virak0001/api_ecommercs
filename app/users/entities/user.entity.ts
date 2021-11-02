@@ -1,7 +1,7 @@
-import { AbstractSoftDeleteEntity } from '../../../libs/core/src/common/abstract-soft-delete.entity';
+import { AbstractSoftDeleteEntity } from '@libs/core/common/abstract-soft-delete.entity';
 import { Column, Entity } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { Status } from '../user.enum';
+import { RoleType, Status } from '../user.enum';
 
 @Entity('users')
 export class UserEntity extends AbstractSoftDeleteEntity {
@@ -12,13 +12,16 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   @Exclude({ toPlainOnly: true })
   password: string;
 
-  @Column({ nullable: true })
-  address: string;
-
   @Column({ unique: true })
   email: string;
 
-  @Column({ type: 'enum', enum: Status })
+  @Column({ nullable: true })
+  avatar?: string;
+
+  @Column({ nullable: true })
+  mobile?: number;
+
+  @Column({ type: 'enum', enum: Status, default: Status.INACTIVE })
   status: Status;
 
   @Column('datetime', { nullable: true })

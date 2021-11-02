@@ -4,3 +4,9 @@ export enum Status {
   SUSPENDED = 'SUSPENDED',
   LOCKED = 'LOCKED',
 }
+
+export enum RoleType {
+  ADMIN = 'ADMIN',
+  OWNER = 'OWNER',
+  MEMBER = 'MEMBER',
+}
