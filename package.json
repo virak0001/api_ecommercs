@@ -46,6 +46,7 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "dotenv": "^10.0.0",
+    "express-basic-auth": "^1.2.0",
     "mysql2": "^2.3.2",
     "nest-event": "^1.0.8",
     "nestjs-config": "^1.4.9",

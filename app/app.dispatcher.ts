@@ -3,6 +3,7 @@ import { AppLogger } from 'libs/core/src/app.logger';
 import { ConfigService } from 'nestjs-config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { setupSwagger } from 'libs/core/src/setup/swagger.setup';
 import { NestApplicationOptions, ValidationPipe } from '@nestjs/common';
 import fs from 'fs';
 declare const module: any;
@@ -37,6 +38,7 @@ export class AppDispatcher {
       AppModule,
       options,
     );
+    setupSwagger(this._app);
     this._config = this._app.get(ConfigService);
   }
   private async _startServer(): Promise<void> {

@@ -11,8 +11,10 @@ import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { AbstractController } from '@libs/core/common/abstract.controller';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('categories')
+@ApiTags('categories')
 export class CategoryController extends AbstractController {
   constructor(private readonly categoryService: CategoryService) {
     super();
