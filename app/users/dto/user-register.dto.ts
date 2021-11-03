@@ -22,6 +22,10 @@ export class UserRegisterDto {
   @ApiPropertyOptional()
   readonly avatar?: string;
 
+  @IsOptional()
+  @ApiPropertyOptional()
+  readonly mobile?: string;
+
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(16)

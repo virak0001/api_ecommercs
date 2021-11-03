@@ -3,6 +3,7 @@ import { AbstractController } from '@libs/core/common/abstract.controller';
 import { UsersService } from './users.service';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { UserEntity } from './entities/user.entity';
 
 @Controller('users')
 @ApiTags('users')
@@ -12,7 +13,7 @@ export class UserController extends AbstractController {
   }
 
   @Post()
-  async create(@Body() payload: UserRegisterDto) {
+  async create(@Body() payload: UserRegisterDto): Promise<UserEntity> {
     return this._userService.createOne(payload);
   }
 }
