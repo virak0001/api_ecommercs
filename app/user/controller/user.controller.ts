@@ -27,7 +27,7 @@ export class UserController extends AbstractController {
     type: UserDto,
     description: 'Profile info',
   })
-  public async whoAmI(@AuthUser() user: any): Promise<any> {
+  public async whoAmI(@AuthUser() user: any): Promise<UserDto> {
     return user;
   }
 }

@@ -41,6 +41,7 @@ export class UsersService {
 
   async createOne(payload: UserRegisterDto): Promise<UserEntity> {
     await this.findIsExist(payload.email);
+    payload.is_admin = 0;
     return this.repo.save(payload);
   }
 }

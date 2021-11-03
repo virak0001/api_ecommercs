@@ -26,6 +26,10 @@ export class UserRegisterDto {
   @ApiPropertyOptional()
   readonly mobile?: string;
 
+  @IsOptional()
+  @ApiPropertyOptional()
+  is_admin: number;
+
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(16)
