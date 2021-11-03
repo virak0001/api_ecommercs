@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from './user.repository';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { UserEntity } from './entities/user.entity';
+import { HashUtil } from '@libs/core/utils/hash.util';
 @Injectable()
 export class UsersService {
   constructor(public repo: UserRepository) {}
@@ -36,6 +37,7 @@ export class UsersService {
 
   async createOne(payload: UserRegisterDto): Promise<UserEntity> {
     await this.findIsExist(payload.email);
+    payload.password = HashUtil.generateHash(payload.password);
     payload.is_admin = 0;
     return this.repo.save(payload);
   }

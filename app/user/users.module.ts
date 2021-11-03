@@ -3,11 +3,12 @@ import { UsersService } from './users.service';
 import { UserController } from './controller/user.controller';
 import { UserRepository } from './user.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SubscriberService } from './subscriber.service';
+// import { SubscriberService } from './subscriber.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UserRepository])],
-  providers: [UsersService, SubscriberService],
+  // SubscriberService was working wrong //
+  providers: [/** SubscriberService **/ UsersService],
   exports: [UsersService],
   controllers: [UserController],
 })

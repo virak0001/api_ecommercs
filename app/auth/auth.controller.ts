@@ -24,10 +24,10 @@ export class AuthController {
   })
   async login(@Body() payload: LoginRequest): Promise<LoginResponseDto> {
     const user = await this._userService.findOneByEmail(payload.email);
-    delete user.password;
+    const token = await this.authService.createAccessToken(user);
     return {
       user: user,
-      token: await this.authService.createAccessToken(user),
+      token,
     };
   }
 }
