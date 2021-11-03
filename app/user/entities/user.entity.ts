@@ -1,7 +1,7 @@
 import { AbstractSoftDeleteEntity } from '@libs/core/common/abstract-soft-delete.entity';
 import { Column, Entity } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { IsAdmin, RoleType, Status } from '../user.enum';
+import { IsAdmin, Status } from '../user.enum';
 
 @Entity('users')
 export class UserEntity extends AbstractSoftDeleteEntity {

@@ -1,6 +1,6 @@
 import { define } from 'typeorm-seeding';
-import { Status } from '../../app/users/user.enum';
-import { UserEntity } from '../../app/users/entities/user.entity';
+import { Status } from '../../app/user/user.enum';
+import { UserEntity } from '../../app/user/entities/user.entity';
 define(UserEntity, (faker, settings: { passwordHash: string }) => {
   const { passwordHash } = settings;
   const user = new UserEntity();

@@ -1,7 +1,12 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Get, HttpException, HttpStatus, Injectable, UseGuards } from '@nestjs/common';
 import { UserRepository } from './user.repository';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { UserEntity } from './entities/user.entity';;
+import { UserEntity } from './entities/user.entity';
+import { ApiBearerAuth } from '@nestjs/swagger';
+import { AuthGuard } from '@libs/core/gaurd/auth.guard';
+import { AuthUser } from '@libs/core/decorators/auth-user.decorator';
+
+;
 @Injectable()
 export class UsersService {
   constructor(public repo: UserRepository) {}

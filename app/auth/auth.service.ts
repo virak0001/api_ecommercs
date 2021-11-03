@@ -1,10 +1,11 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+import { UsersService } from '../user/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { TokenPayloadDto } from './dto/token-payload.dto';
 import { classToPlain } from 'class-transformer';
 import { HashUtil } from '../../libs/core/src/utils/hash.util';
-import { Status } from '../users/user.enum';
+import { Status } from '../user/user.enum';
+import { options } from 'tsconfig-paths/lib/options';
 
 @Injectable()
 export class AuthService {
@@ -32,7 +33,7 @@ export class AuthService {
   async createAccessToken(user: any): Promise<any> {
     const response = new TokenPayloadDto();
     const dataToken = { dataToken: classToPlain(user) };
-    const token = this._jwtService.sign(dataToken);
-    return { ...response, token };
+    const accessToken = this._jwtService.sign(dataToken);
+    return { ...response, accessToken };
   }
 }

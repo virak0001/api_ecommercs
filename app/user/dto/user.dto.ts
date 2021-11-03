@@ -1,4 +1,4 @@
-import { AbstractDto } from '../../../libs/core/src/common/dto/abstract.dto';
+import { AbstractDto } from '@libs/core/common/dto/abstract.dto';
 import { ApiHideProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Status } from '../user.enum';
 
@@ -12,10 +12,13 @@ export class UserDto extends AbstractDto {
   @ApiPropertyOptional()
   avatar: string;
 
-  @ApiPropertyOptional()
+  @ApiHideProperty()
   password: string;
 
-  @ApiPropertyOptional({ enum: Status })
+  @ApiPropertyOptional()
+  mobile: string;
+
+  @ApiPropertyOptional()
   status: Status;
 
   @ApiHideProperty()

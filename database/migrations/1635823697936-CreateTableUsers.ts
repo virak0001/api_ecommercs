@@ -1,5 +1,5 @@
 import { TimestampSoftDeleteMigration } from '../common';
-import { Status } from '../../app/users/user.enum';
+import { Status } from '../../app/user/user.enum';
 
 export class CreateTableUsers1635823697936 extends TimestampSoftDeleteMigration {
   public tableName = 'users';

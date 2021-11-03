@@ -3,8 +3,8 @@ import * as faker from 'faker';
 import { Connection } from 'typeorm';
 import { Factory, Seeder } from 'typeorm-seeding';
 import { HashUtil } from '@libs/core/utils/hash.util';
-import { UserEntity } from '../../app/users/entities/user.entity';
-import { IsAdmin, Status } from '../../app/users/user.enum';
+import { UserEntity } from '../../app/user/entities/user.entity';
+import { IsAdmin, Status } from '../../app/user/user.enum';
 
 export class Insert003Admin implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
