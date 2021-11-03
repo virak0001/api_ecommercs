@@ -6,6 +6,7 @@ import { AuthGuard } from '@libs/core/gaurd/auth.guard';
 import { JwtService } from '@nestjs/jwt';
 import { AuthUser } from '@libs/core/decorators/auth-user.decorator';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { UsersService } from '../users/users.service';
 
 @Controller('auth')
 @ApiTags('auth')
@@ -13,12 +14,15 @@ export class AuthController {
   constructor(
     private authService: AuthService,
     private readonly _jwtService: JwtService,
+    private readonly _userService: UsersService,
   ) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() payload: AuthLogin) {
-    return this.authService.createAccessToken(payload);
+    const user = await this._userService.findOneByEmail(payload.email);
+    delete user.password;
+    return { ...user, ...(await this.authService.createAccessToken(user)) };
   }
 
   @Get('profile')

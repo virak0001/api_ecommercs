@@ -20,6 +20,20 @@ export class UsersService {
     return user;
   }
 
+  async findOneByEmail(email: string): Promise<any> {
+    const user = await this.repo.findOne({ email });
+    if (!user) {
+      throw new HttpException(
+        {
+          error: 'User',
+          message: 'User is not found!.',
+        },
+        HttpStatus.PRECONDITION_FAILED,
+      );
+    }
+    return user;
+  }
+
   async createOne(payload: UserRegisterDto): Promise<UserEntity> {
     await this.findIsExist(payload.email);
     return this.repo.save(payload);
