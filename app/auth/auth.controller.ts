@@ -5,7 +5,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from '@libs/core/gaurd/auth.guard';
 import { JwtService } from '@nestjs/jwt';
 import { AuthUser } from '@libs/core/decorators/auth-user.decorator';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
 @ApiTags('auth')
@@ -22,6 +22,7 @@ export class AuthController {
   }
 
   @Get('profile')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   public async whoAmI(@AuthUser() user: any): Promise<any> {
     return user;
