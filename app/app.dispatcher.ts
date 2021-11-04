@@ -42,8 +42,7 @@ export class AppDispatcher {
     this._config = this._app.get(ConfigService);
   }
   private async _startServer(): Promise<void> {
-    const app = await NestFactory.create(AppModule);
-    app.useGlobalPipes(new ValidationPipe());
+    this._app.useGlobalPipes(new ValidationPipe());
     const host = this._config.get('app.host');
     const port = +this._config.get('app.port');
     await this._app.listen(port, host);

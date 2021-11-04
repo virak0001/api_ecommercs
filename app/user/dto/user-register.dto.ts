@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   MaxLength,
   MinLength,
@@ -26,6 +27,7 @@ export class UserRegisterDto {
   @IsOptional()
   @IsNotEmpty()
   @ApiPropertyOptional()
+  @IsNumber()
   readonly phone?: number;
 
   @IsOptional()
