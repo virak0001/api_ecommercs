@@ -16,9 +16,8 @@ export class UserController extends AbstractController {
   }
 
   @Post('users')
-  async create(@Body() payload: UserRegisterDto): Promise<any> {
-    // return this._userService.createOne(payload);
-    return payload;
+  async create(@Body() payload: UserRegisterDto): Promise<UserEntity> {
+    return this._userService.createOne(payload);
   }
 
   @Get('profile')
