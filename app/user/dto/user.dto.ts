@@ -16,7 +16,7 @@ export class UserDto extends AbstractDto {
   password: string;
 
   @ApiPropertyOptional()
-  mobile: string;
+  phone: number;
 
   @ApiPropertyOptional()
   status: Status;

@@ -21,6 +21,20 @@ export class UsersService {
     return user;
   }
 
+  async findIsPhoneExist(phone: number): Promise<any> {
+    const user = await this.repo.findOne({ phone });
+    if (user) {
+      throw new HttpException(
+        {
+          error: 'User',
+          message: 'Phone is already exist.',
+        },
+        HttpStatus.PRECONDITION_FAILED,
+      );
+    }
+    return user;
+  }
+
   async findOneByEmail(email: string): Promise<any> {
     const user = await this.repo.findOne({ email });
     if (!user) {
@@ -36,7 +50,12 @@ export class UsersService {
   }
 
   async createOne(payload: UserRegisterDto): Promise<UserEntity> {
-    await this.findIsExist(payload.email);
+    if (payload?.email) {
+      await this.findIsExist(payload.email);
+    }
+    if (payload?.phone) {
+      await this.findIsPhoneExist(payload.phone);
+    }
     payload.password = HashUtil.generateHash(payload.password);
     payload.is_admin = 0;
     return this.repo.save(payload);

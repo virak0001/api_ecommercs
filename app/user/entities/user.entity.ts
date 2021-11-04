@@ -12,14 +12,14 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   @Exclude({ toPlainOnly: true })
   password: string;
 
-  @Column({ unique: true })
-  email: string;
+  @Column({ unique: true, nullable: true })
+  email?: string;
 
   @Column({ nullable: true })
   avatar?: string;
 
-  @Column({ nullable: true })
-  mobile?: string;
+  @Column({ nullable: true, unique: true, })
+  phone?: number;
 
   @Column({ nullable: false, enum: IsAdmin, default: IsAdmin.FALSE })
   is_admin: IsAdmin;

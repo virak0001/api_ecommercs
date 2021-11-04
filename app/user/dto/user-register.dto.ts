@@ -13,9 +13,10 @@ export class UserRegisterDto {
   @ApiProperty()
   readonly username: string;
 
+  @IsOptional()
   @IsNotEmpty()
   @IsEmail()
-  @ApiProperty()
+  @ApiPropertyOptional()
   readonly email: string;
 
   @IsOptional()
@@ -23,8 +24,9 @@ export class UserRegisterDto {
   readonly avatar?: string;
 
   @IsOptional()
+  @IsNotEmpty()
   @ApiPropertyOptional()
-  readonly mobile?: string;
+  readonly phone?: number;
 
   @IsOptional()
   @ApiPropertyOptional()
