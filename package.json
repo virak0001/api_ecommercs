@@ -52,6 +52,7 @@
     "express-basic-auth": "^1.2.0",
     "husky": "^7.0.4",
     "mysql2": "^2.3.2",
+    "nest-aws-sdk": "^2.0.0",
     "nest-event": "^1.0.8",
     "nestjs-config": "^1.4.9",
     "nps": "^5.10.0",

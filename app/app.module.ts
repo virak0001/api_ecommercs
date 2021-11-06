@@ -5,9 +5,10 @@ import { CategoryModule } from './category/category.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './user/users.module';
 import { CoreModule } from '@libs/core/modules';
+import { SmsModule } from './sms/sms.module';
 
 @Module({
-  imports: [CoreModule, CategoryModule, AuthModule, UsersModule],
+  imports: [CoreModule, CategoryModule, AuthModule, UsersModule, SmsModule],
   controllers: [AppController],
   providers: [AppService],
 })
