@@ -18,8 +18,8 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   @Column({ nullable: true })
   avatar?: string;
 
-  @Column({ nullable: true, unique: true, })
-  phone?: number;
+  @Column({ nullable: true, unique: true })
+  phone?: string;
 
   @Column({ nullable: false, enum: IsAdmin, default: IsAdmin.FALSE })
   is_admin: IsAdmin;
