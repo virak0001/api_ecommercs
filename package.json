@@ -49,6 +49,7 @@
     "compression": "^1.7.4",
     "dotenv": "^10.0.0",
     "express-basic-auth": "^1.2.0",
+    "husky": "^7.0.4",
     "mysql2": "^2.3.2",
     "nest-event": "^1.0.8",
     "nestjs-config": "^1.4.9",
