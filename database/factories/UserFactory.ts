@@ -8,7 +8,6 @@ define(UserEntity, (faker, settings: { passwordHash: string }) => {
   user.email = faker.internet.email(name);
   user.password = passwordHash;
   user.username = name;
-  user.is_admin = 1;
   user.avatar = faker.internet.avatar();
   user.status = Status.ACTIVE;
   return user;

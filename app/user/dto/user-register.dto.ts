@@ -1,9 +1,4 @@
-import {
-  IsNotEmpty,
-  IsOptional,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsNotEmpty, IsOptional, MaxLength, MinLength } from 'class-validator';
 import { RoleType } from '../user.enum';
 import {
   ApiHideProperty,
@@ -22,9 +17,6 @@ export class UserRegisterDto {
   @IsOptional()
   @ApiPropertyOptional()
   readonly avatar?: string;
-
-  @ApiHideProperty()
-  phone?: string;
 
   @IsNotEmpty()
   @ApiProperty()
