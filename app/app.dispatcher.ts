@@ -38,6 +38,7 @@ export class AppDispatcher {
       AppModule,
       options,
     );
+    this._app.setGlobalPrefix('api/');
     setupSwagger(this._app);
     this._config = this._app.get(ConfigService);
   }

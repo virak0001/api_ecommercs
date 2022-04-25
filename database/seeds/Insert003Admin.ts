@@ -17,8 +17,6 @@ export class Insert003Admin implements Seeder {
       username: 'Virak Ran',
       avatar: faker.internet.avatar(),
       status: Status.ACTIVE,
-      is_admin: IsAdmin.TRUE,
-      phone: '099393709',
       verified_at: new Date(),
     });
 

@@ -23,6 +23,7 @@ export class AuthController {
     description: 'Profile info',
   })
   async login(@Body() payload: LoginRequest): Promise<LoginResponseDto> {
+    console.warn(payload);
     const user = await this._userService.findOneByEmail(payload.email);
     const token = await this.authService.createAccessToken(user);
     return {
