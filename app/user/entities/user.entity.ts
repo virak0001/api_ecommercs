@@ -18,7 +18,7 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   @Column({ nullable: true })
   avatar?: string;
 
-  @Column({ type: 'enum', enum: Status, default: Status.INACTIVE })
+  @Column({ type: 'enum', enum: Status, default: Status.ACTIVE })
   status: Status;
 
   @Column('datetime', { nullable: true })
