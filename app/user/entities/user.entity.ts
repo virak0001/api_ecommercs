@@ -26,4 +26,7 @@ export class UserEntity extends AbstractSoftDeleteEntity {
 
   @Column('datetime', { nullable: true })
   verified_at: Date;
+
+  @Column()
+  employee_id?: string;
 }

@@ -18,6 +18,7 @@ export class Insert003Admin implements Seeder {
       avatar: faker.internet.avatar(),
       status: Status.ACTIVE,
       verified_at: new Date(),
+      employee_id: null,
     });
 
     await connection.manager.save([userAdmin]);
