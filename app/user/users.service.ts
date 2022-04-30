@@ -58,7 +58,7 @@ export class UsersService {
     //   await this.findIsPhoneExist(payload.phone);
     // } else if (email.test(payload.emailOrPhone)) {
     //   payload.email = payload.emailOrPhone;
-    //   await this.findIsExist(payload.email);
+    await this.findIsExist(payload.email);
     // } else if (
     //   !phone.test(payload.emailOrPhone) &&
     //   !email.test(payload.emailOrPhone)

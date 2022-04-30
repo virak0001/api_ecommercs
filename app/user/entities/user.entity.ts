@@ -28,5 +28,5 @@ export class UserEntity extends AbstractSoftDeleteEntity {
   verified_at: Date;
 
   @Column()
-  employee_id?: string;
+  employee_id?: number;
 }
