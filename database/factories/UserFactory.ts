@@ -10,5 +10,6 @@ define(UserEntity, (faker, settings: { passwordHash: string }) => {
   user.username = name;
   user.avatar = faker.internet.avatar();
   user.status = Status.ACTIVE;
+  user.employee_id = null;
   return user;
 });

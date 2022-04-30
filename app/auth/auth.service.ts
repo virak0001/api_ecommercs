@@ -35,4 +35,19 @@ export class AuthService {
     const accessToken = this._jwtService.sign(dataToken);
     return { ...response, accessToken };
   }
+
+  async logout(user: any): Promise<{ token }> {
+    await this.revokeTokenForUser(user.rjwt);
+    return { token: null };
+  }
+
+  async revokeTokenForUser(key: number | string): Promise<boolean> {
+    try {
+      // need to implement logout here
+      return true;
+    } catch (error) {
+      return null;
+    }
+    return true;
+  }
 }
